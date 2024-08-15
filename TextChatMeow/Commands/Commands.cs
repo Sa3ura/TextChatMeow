@@ -21,7 +21,7 @@ namespace TextChatMeow
 
         public string[] Aliases { get; } = new[] { "c" };
 
-        public string Description { get; } = "向周围的玩家发送一条消息";
+        public string Description { get; } = "向附近的玩家发送消息";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -33,7 +33,7 @@ namespace TextChatMeow
             var str = string.Join(" ", arguments.ToArray());
             SendMessage(str, player);
 
-            response = $"您的消息已被发送至周围玩家：{str}";
+            response = "您的消息已发送！";
             return true;
         }
 
@@ -64,78 +64,78 @@ namespace TextChatMeow
         }
     }
 
-    [CommandHandler(typeof(ClientCommandHandler))]
-    public class RadioChat : ICommand, IChatCommand
-    {
-        public string Command { get; } = "RadioChat";
+    //[CommandHandler(typeof(ClientCommandHandler))]
+    //public class RadioChat : ICommand, IChatCommand
+    //{
+    //    public string Command { get; } = "RadioChat";
 
-        public string[] Aliases { get; } = new[] { "rc" };
+    //    public string[] Aliases { get; } = new[] { "rc" };
 
-        public string Description { get; } = "通过无线电发送一条消息";
+    //    public string Description { get; } = "通过无线电发送一条消息";
 
-        public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
-        {
-            var player = Player.Get(sender);
+    //    public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
+    //    {
+    //        var player = Player.Get(sender);
 
-            if(!CheckPermission(player, out response))
-                return false;
+    //        if(!CheckPermission(player, out response))
+    //            return false;
 
-            var str = string.Join(" ", arguments.ToArray());
-            SendMessage(str, player);
+    //        var str = string.Join(" ", arguments.ToArray());
+    //        SendMessage(str, player);
 
-            response = $"您的消息已通过无线电发送：{str}";
-            return true;
-        }
+    //        response = $"您的消息已通过无线电发送：{str}";
+    //        return true;
+    //    }
 
-        public bool CheckPermission(Player player, out string response)
-        {
-            if (!Plugin.instance.Config.AllowRadioChat)
-            {
-                response = "此频道已被禁用";
-                return false;
-            }
+    //    public bool CheckPermission(Player player, out string response)
+    //    {
+    //        if (!Plugin.instance.Config.AllowRadioChat)
+    //        {
+    //            response = "此频道已被禁用";
+    //            return false;
+    //        }
 
-            if (player.IsMuted)
-            {
-                response = "您已被禁言，禁言期间无法使用文字交流";
-                return false;
-            }
+    //        if (player.IsMuted)
+    //        {
+    //            response = "您已被禁言，禁言期间无法使用文字交流";
+    //            return false;
+    //        }
 
-            if (!player.HasItem(ItemType.Radio))
-            {
-                response = "您没有对讲机，无法通过无线电发送消息";
-                return false;
-            }
+    //        if (!player.HasItem(ItemType.Radio))
+    //        {
+    //            response = "您没有对讲机，无法通过无线电发送消息";
+    //            return false;
+    //        }
 
-            if (((Radio)player.Items.First(x => x.Type == ItemType.Radio)).BatteryLevel <= 0)
-            {
-                response = "您的对讲机电量已经耗尽，无法通过无线电发送消息";
-                return false;
-            }
+    //        if (((Radio)player.Items.First(x => x.Type == ItemType.Radio)).BatteryLevel <= 0)
+    //        {
+    //            response = "您的对讲机电量已经耗尽，无法通过无线电发送消息";
+    //            return false;
+    //        }
 
-            response = string.Empty;
-            return true;
-        }
+    //        response = string.Empty;
+    //        return true;
+    //    }
 
-        public void SendMessage(string str, Player player)
-        {
-            ((Radio)player.Items.First(x => x.Type == ItemType.Radio)).BatteryLevel--;
+    //    public void SendMessage(string str, Player player)
+    //    {
+    //        ((Radio)player.Items.First(x => x.Type == ItemType.Radio)).BatteryLevel--;
 
-            str = CommandTools.ClearTags(str);
-            var message = new RadioChatMessage(str, player);
+    //        str = CommandTools.ClearTags(str);
+    //        var message = new RadioChatMessage(str, player);
 
-            MessagesList.AddMessage(message);
-        }
-    }
+    //        MessagesList.AddMessage(message);
+    //    }
+    //}
 
     [CommandHandler(typeof(ClientCommandHandler))]
     public class PublicChat : ICommand, IChatCommand
     {
         public string Command { get; } = "PublicChat";
 
-        public string[] Aliases { get; } = new[] { "pc" };
+        public string[] Aliases { get; } = new[] { "bc" };
 
-        public string Description { get; } = "向所有的玩家发送一条消息";
+        public string Description { get; } = "向所有的玩家发送消息";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -147,7 +147,7 @@ namespace TextChatMeow
             var str = string.Join(" ", arguments.ToArray());
             SendMessage(str, player);
 
-            response = $"您的消息已被发送至所有玩家：{str}";
+            response = "您的消息已发送！";
             return true;
         }
 
@@ -183,9 +183,9 @@ namespace TextChatMeow
     {
         public string Command { get; } = "TeamChat";
 
-        public string[] Aliases { get; } = new[] { "tc" };
+        public string[] Aliases { get; } = new[] { "c" };
 
-        public string Description { get; } = "向同队伍的的玩家发送一条消息";
+        public string Description { get; } = "向同队伍的的玩家发送消息";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -197,7 +197,7 @@ namespace TextChatMeow
             var str = string.Join(" ", arguments.ToArray());
             SendMessage(str, player);
 
-            response = $"您的消息已被发送至同队伍的玩家：{str}";
+            response = "您的消息已发送！";
             return true;
         }
 

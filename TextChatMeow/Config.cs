@@ -23,36 +23,36 @@ namespace TextChatMeow
         public HintAlignment MessageAlignment { get; set; } = HintAlignment.Left;
         public float MessageYCoordinate { get; set; } = 800;
 
-        [Description("Should the tip disappear after a while?")]
+        [Description("一段时间后提示会消失? ")]
         public bool TipDisappears { get; set; } = true;
-        [Description("Should the message disappear after a while? Do not close this when CountDownTip is active, otherwise error may occur.")]
+        [Description("消息是否应在一段时间后消失? CountDownTip 处于活动状态时请勿关闭它，否则可能会发生错误。")]
         public bool MessagesDisappears { get; set; } = true;
-        [Description("Should the tip have a countdown in front of them? This will only be active when MessagesDisappears is active.")]
+        [Description("提示前面是否应该有倒计时? 这仅在 MessagesDisappears 处于活动状态时才会激活。")]
         public bool CountDownTip { get; set; } = false;
 
-        [Description("How long should the tip display before it disappears?")]
+        [Description("提示要显示多久才会消失?")]
         public int TipDisappearTime { get; set; } = 10;
-        [Description("How long should a message display before it disappears?")]
+        [Description("消息显示多久后消失?")]
         public int MessagesDisappearTime { get; set; } = 10;
 
-        [Description("Proximity Chat Config\nAllow proximity chat?")]
+        [Description("近距离聊天配置\n允许近距离聊天吗?")]
         public bool AllowProximityChat { get; set; } = true;
-        [Description("How far should the message goes?")]
+        [Description("近距离聊天的信息应该传播多远?")]
         public int ProximityChatDistance { get; set; } = 20;
-        [Description("Allow chat between SCP and Human using proximity chat?")]
+        [Description("允许 SCP 与人类使用近距离聊天进行聊天吗?")]
         public bool ScpAndHumanProximityChat { get; set; } = false;
 
-        [Description("Allow chat through radio?")]
+        [Description("允许通过无线电聊天吗?")]
         public bool AllowRadioChat { get; set; } = true;
 
-        [Description("Allow chat within team?")]
+        [Description("允许团队聊天吗?")]
         public bool AllowTeamChat { get; set; } = false;
 
-        [Description("Public Chat Config\nAllow chat with everyone?")]
+        [Description("公共聊天配置\n允许与所有人聊天？")]
         public bool AllowPublicChat { get; set; } = false;
-        [Description("Allow spectators chat with alives using public chat?")]
+        [Description("允许观察者使用公众聊天吗？")]
         public bool AllowSpectatorsChatWithPublic { get; set; } = false;
-        [Description("Allow chat between SCP and Human using public chat?")]
+        [Description("允许 SCP 与人类使用公共聊天进行聊天吗？")]
         public bool ScpAndHumanPublicChat { get; set; } = false;
 
         [Description("Translation for chat tip")]

@@ -38,7 +38,7 @@ namespace TextChatMeow
         public static Plugin instance { get; set; }
 
         public override string Name => "TextChatMeow";
-        public override string Author => "MeowServerOwner";
+        public override string Author => "Sa3ura, MeowServerOwner";
         public override Version Version => new Version(1, 4, 0);
 
         public override void OnEnabled()

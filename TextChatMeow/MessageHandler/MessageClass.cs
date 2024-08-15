@@ -58,7 +58,8 @@ namespace TextChatMeow
         {
             get
             {
-                var str = "<b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                //var str = "<b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                var str = "<b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>{PlayerNickName}: "
                     .Replace("{colorOfChannel}", Plugin.instance.Config.ChannelsColor[Type].ToHex())
                     .Replace("{Channel}", Plugin.instance.Config.ChannelsName[Type])
                     .Replace("{role}", source)
@@ -116,7 +117,8 @@ namespace TextChatMeow
         {
             get
             {
-                var str = "{PlayerNickName}: <b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                //var str = "{PlayerNickName}: <b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                 var str = "<b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>{PlayerNickName}: "
                     .Replace("{PlayerNickName}", SenderNickname)
                     .Replace("{colorOfChannel}", Plugin.instance.Config.ChannelsColor[Type].ToHex())
                     .Replace("{Channel}", Plugin.instance.Config.ChannelsName[Type])
@@ -241,7 +243,8 @@ namespace TextChatMeow
         {
             get
             {
-                var str = "{PlayerNickName}: <b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                //var str = "{PlayerNickName}: <b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                var str = "<b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>{PlayerNickName}: "
                     .Replace("{PlayerNickName}", SenderNickname)
                     .Replace("{colorOfChannel}", Plugin.instance.Config.ChannelsColor[Type].ToHex())
                     .Replace("{Channel}", Plugin.instance.Config.ChannelsName[Type])
@@ -291,7 +294,8 @@ namespace TextChatMeow
         {
             get
             {
-                var str = "{PlayerNickName}: <b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                //var str = "{PlayerNickName}: <b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>"
+                var str = "<b><color={colorOfChannel}>[{Channel}]</color><color={colorOfRole}>[{role}]</color></b>{PlayerNickName}: "
                     .Replace("{PlayerNickName}", SenderNickname)
                     .Replace("{colorOfChannel}", Plugin.instance.Config.ChannelsColor[Type].ToHex())
                     .Replace("{Channel}", Plugin.instance.Config.ChannelsName[Type])
