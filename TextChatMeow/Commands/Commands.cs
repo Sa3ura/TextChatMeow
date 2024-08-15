@@ -19,13 +19,19 @@ namespace TextChatMeow
     {
         public string Command { get; } = "ProximityChat";
 
-        public string[] Aliases { get; } = new[] { "c" };
+        public string[] Aliases { get; } = new[] { "pc" };
 
         public string Description { get; } = "向附近的玩家发送消息";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
             var player = Player.Get(sender);
+
+            if (arguments.Count == 0 || string.IsNullOrWhiteSpace(arguments.At(0)))
+            {
+                response = "无法发送空内容，请重新尝试";
+                return false;
+            }
 
             if (!CheckPermission(player, out response))
                 return false;
@@ -37,21 +43,21 @@ namespace TextChatMeow
             return true;
         }
 
-        public bool CheckPermission(Player player, out string resposne)
+        public bool CheckPermission(Player player, out string response)
         {
             if (!Plugin.instance.Config.AllowProximityChat)
             {
-                resposne = "此频道已被禁用";
+                response = "此频道已被禁用";
                 return false;
             }
 
             if (player.IsMuted)
             {
-                resposne = "您已被禁言，禁言期间无法使用文字交流";
+                response = "您已被禁言，禁言期间无法使用文字交流";
                 return false;
             }
 
-            resposne = string.Empty;
+            response = string.Empty;
             return true;
         }
 
@@ -144,6 +150,12 @@ namespace TextChatMeow
             if (!CheckPermission(player, out response))
                 return false;
 
+            if (arguments.Count == 0 || string.IsNullOrWhiteSpace(arguments.At(0)))
+            {
+                response = "无法发送空内容，请重新尝试";
+                return false;
+            }
+
             var str = string.Join(" ", arguments.ToArray());
             SendMessage(str, player);
 
@@ -193,6 +205,12 @@ namespace TextChatMeow
 
             if (!CheckPermission(player, out response))
                 return false;
+
+            if (arguments.Count == 0 || string.IsNullOrWhiteSpace(arguments.At(0)))
+            {
+                response = "无法发送空内容，请重新尝试";
+                return false;
+            }
 
             var str = string.Join(" ", arguments.ToArray());
             SendMessage(str, player);
