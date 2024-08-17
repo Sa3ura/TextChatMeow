@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 using TextChatMeow.Commands;
+using PlayerRoles;
 
 namespace TextChatMeow
 {
@@ -169,7 +170,7 @@ namespace TextChatMeow
             {
                 response = "此频道已被禁用";
                 return false;
-            } else if (!Plugin.instance.Config.AllowSpectatorsChatWithPublic)
+            } else if (player.Role == RoleTypeId.Spectator)
             {
                 response = "为避免观察者影响对局，已禁用观察者公共聊天";
                 return false;
