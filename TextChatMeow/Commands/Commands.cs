@@ -169,6 +169,10 @@ namespace TextChatMeow
             {
                 response = "此频道已被禁用";
                 return false;
+            } else if (!Plugin.instance.Config.AllowSpectatorsChatWithPublic)
+            {
+                response = "为避免观察者影响对局，已禁用观察者公共聊天";
+                return false;
             }
 
             if (player.IsMuted)
